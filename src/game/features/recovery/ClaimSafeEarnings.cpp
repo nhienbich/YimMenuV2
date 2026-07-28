@@ -23,7 +23,7 @@ namespace YimMenu::Features
 				return;
 
 			if (GPBD_FM::Get()->Entries[Self::GetPlayer().GetId()].PropertyData.NightclubData.SafeCashValue > 0)
-				*ScriptGlobal(2708832).As<BOOL*>() = TRUE;
+				*ScriptGlobal(2708943).As<BOOL*>() = TRUE;
 		}
 	};
 	static ClaimNightclub _ClaimNightclub{"claimsafenightclub", "Nightclub", "Claim safe earnings from Nightclub."};
@@ -37,7 +37,7 @@ namespace YimMenu::Features
 				return;
 
 			if (GPBD_FM::Get()->Entries[Self::GetPlayer().GetId()].PropertyData.ArcadeData.SafeCashValue > 0)
-				*ScriptGlobal(2708841).As<BOOL*>() = TRUE;
+				*ScriptGlobal(2708952).As<BOOL*>() = TRUE;
 		}
 	};
 	static ClaimArcade _ClaimArcade{"claimsafearcade", "Arcade", "Claim safe earnings from Arcade."};
@@ -51,7 +51,7 @@ namespace YimMenu::Features
 				return;
 
 			if (GPBD_FM::Get()->Entries[Self::GetPlayer().GetId()].PropertyData.FixerHQData.SafeCashValue > 0)
-				*ScriptGlobal(2708850).As<BOOL*>() = TRUE;
+				*ScriptGlobal(2708961).As<BOOL*>() = TRUE;
 		}
 	};
 	static ClaimAgency _ClaimAgency{"claimsafeagency", "Agency", "Claim safe earnings from Agency."};
@@ -65,7 +65,7 @@ namespace YimMenu::Features
 				return;
 
 			if (GPBD_FM::Get()->Entries[Self::GetPlayer().GetId()].PropertyData.SalvageYardData.TotalEarnings > 0)
-				*ScriptGlobal(2708859).As<BOOL*>() = TRUE;
+				*ScriptGlobal(2708970).As<BOOL*>() = TRUE;
 			Stats::SetPackedInt(51051, 100);
 		}
 	};
@@ -80,7 +80,7 @@ namespace YimMenu::Features
 				return;
 
 			if (GPBD_FM::Get()->Entries[Self::GetPlayer().GetId()].PropertyData.BailShopData.SafeCashValue > 0)
-				*ScriptGlobal(2708868).As<BOOL*>() = TRUE;
+				*ScriptGlobal(2708979).As<BOOL*>() = TRUE;
 		}
 	};
 	static ClaimBailOffice _ClaimBailOffice{"claimsafebailoffice", "Bail Office", "Claim safe earnings from Bail Office."};
@@ -94,7 +94,7 @@ namespace YimMenu::Features
 				return;
 
 			if (GPBD_FM::Get()->Entries[Self::GetPlayer().GetId()].PropertyData.HackerDenData.SafeCashValue > 0)
-				*ScriptGlobal(2708883).As<BOOL*>() = TRUE;
+				*ScriptGlobal(2708994).As<BOOL*>() = TRUE;
 		}
 	};
 	static ClaimGarmentFactory _ClaimGarmentFactory{"claimsafegarmentfactory", "Garment Factory", "Claim safe earnings from Garment Factory."};
@@ -110,7 +110,7 @@ namespace YimMenu::Features
 				return;
 
 			if (GPBD_FM_2::Get()->Entries[Self::GetPlayer().GetId()].SYVehSaleData.HOWCData.SafeCashValue > 0)
-				*ScriptGlobal(2708890).As<BOOL*>() = TRUE;
+				*ScriptGlobal(2709001).As<BOOL*>() = TRUE;
 			Stats::SetPackedInt(24924, 0);
 			Stats::SetPackedInt(24925, 0);
 			Stats::SetPackedInt(24926, 0);
@@ -129,7 +129,7 @@ namespace YimMenu::Features
 				{
 					if (m_loop == 0)
 					{
-						*ScriptGlobal(2708832).As<BOOL*>() = TRUE;
+						*ScriptGlobal(2708943).As<BOOL*>() = TRUE;
 					}
 					else
 					{
@@ -295,7 +295,6 @@ namespace YimMenu::Features
 				if (localVar.CanAccess())
 				{
 					*localVar.At(1035).As<int*>() = 0;
-					*localVar.At(1078).As<int*>() = 1;
 					Notifications::Show("BNTT", "Sell Air Cargo", NotificationType::Success);
 				}
 			}
