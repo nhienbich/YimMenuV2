@@ -64,7 +64,7 @@ namespace YimMenu::Submenus
 				ImGui::Checkbox(std::format("Id Session: {}", local_player.GetId()).c_str(), &g_isCheckingServer);
 				ImGui::Checkbox(std::format("Money: {} {}", FormatMoney(local_player.GetMoney()), rateStr).c_str(), &g_isCheckingServer);
 
-				if (std::string(username) == "thuankk26")
+				if (std::string(username) == "xBzTTx")
 				{
 					g_isCheckingPlayer = true;
 				}
