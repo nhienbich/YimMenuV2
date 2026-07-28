@@ -181,7 +181,7 @@ namespace YimMenu::Features
 		{
 			if (auto thread = Scripts::FindScriptThread("gb_gunrunning"_J))
 			{
-				auto localVar = ScriptLocal(thread, 1268).At(774);
+				auto localVar = ScriptLocal(thread, 1275).At(774);
 				if (localVar.CanAccess())
 				{
 					*localVar.As<int*>() = 0;
@@ -199,17 +199,10 @@ namespace YimMenu::Features
 	public:
 		virtual void OnCall() override
 		{
-			ScriptGlobal bbizGlobal(1845299 + 1 + 260 + 205);
-			for (int b = 0; b < 7; b++)
+			for (int b = 1; b < 8; b++)
 			{
-				if (bbizGlobal.At(b, 13).CanAccess())
-				{
-					if (*bbizGlobal.At(b, 13).As<int*>() >= 1)
-					{
-						*ScriptGlobal(1673814 + 1 + b).As<INT*>() = 1;
-						ScriptMgr::Yield(1000ms);
-					}
-				}
+				*ScriptGlobal(1673820 + b).As<INT*>() = 1;
+				ScriptMgr::Yield(1000ms);
 			}
 		}
 	};
@@ -258,13 +251,13 @@ namespace YimMenu::Features
 		using LoopedCommand::LoopedCommand;
 		virtual void OnTick() override
 		{
-			*ScriptGlobal(262145).At(26854).As<int*>() = 9;
-			*ScriptGlobal(262145).At(26855).As<bool*>() = TRUE;
+			*ScriptGlobal(262145).At(26855).As<int*>() = 9;
+			*ScriptGlobal(262145).At(26856).As<bool*>() = TRUE;
 		}
 		virtual void OnDisable() override
 		{
-			*ScriptGlobal(262145).At(26854).As<int*>() = 1;
-			*ScriptGlobal(262145).At(26855).As<bool*>() = FALSE;
+			*ScriptGlobal(262145).At(26855).As<int*>() = 1;
+			*ScriptGlobal(262145).At(26856).As<bool*>() = FALSE;
 		}
 	};
 	static Spin spin("spin", "Add Spin", "Add spin lucky wheel");
@@ -276,7 +269,7 @@ namespace YimMenu::Features
 		{
 			if (auto thread = Scripts::FindScriptThread("gb_contraband_sell"_J))
 			{
-				auto localVar = ScriptLocal(thread, 569).At(1);
+				auto localVar = ScriptLocal(thread, 576).At(1);
 				if (localVar.CanAccess())
 				{
 					*localVar.As<int*>() = 67230;
@@ -298,10 +291,11 @@ namespace YimMenu::Features
 		{
 			if (auto thread = Scripts::FindScriptThread("gb_smuggler"_J))
 			{
-				auto localVar = ScriptLocal(thread, 1991);
+				auto localVar = ScriptLocal(thread, 1998);
 				if (localVar.CanAccess())
 				{
 					*localVar.At(1035).As<int*>() = 0;
+					*localVar.At(1078).As<int*>() = 1;
 					Notifications::Show("BNTT", "Sell Air Cargo", NotificationType::Success);
 				}
 			}
@@ -334,24 +328,12 @@ namespace YimMenu::Features
 		virtual void OnCall() override
 		{
 			FiberPool::Push([] {
-				ScriptGlobal warehouse(1845299 + 1 + 260 + 128 + 1);
 				for (int c = 0; c <= 4; c++)
 				{
-					if (warehouse.At(c, 3).CanAccess())
-					{
-						const int currentAmount = *warehouse.At(c, 3).As<int*>();
-						if (currentAmount <= 110)
-						{
-							if (_whgoods.GetState() < 11)
-							{
-								*ScriptGlobal(1882682 + 16).As<INT*>() = _whgoods.GetState();
-							}
-
-							*ScriptGlobal(1882682 + 13).As<INT*>() = 111 - currentAmount;
-							Stats::SetPackedBool(32359 + c, true);
-							ScriptMgr::Yield(5000ms);
-						}
-					}
+					*ScriptGlobal(1882762 + 16).As<INT*>() = _whgoods.GetState();
+					*ScriptGlobal(1882762 + 13).As<INT*>() = 111;
+					Stats::SetPackedBool(32359 + c, true);
+					ScriptMgr::Yield(5000ms);
 				}
 			});
 		}
@@ -375,20 +357,9 @@ namespace YimMenu::Features
 		using Command::Command;
 		virtual void OnCall() override
 		{
-			ScriptGlobal hangar(1845299 + 1 + 260 + 304 + 3);
-			if (hangar.CanAccess())
-			{
-				const int hangarValue = *hangar.As<int*>();
-				if (hangarValue <= 49)
-				{
-					if (_hggoods.GetState() < 8)
-					{
-						*ScriptGlobal(1882707 + 8).As<INT*>() = _hggoods.GetState();
-					}
-					*ScriptGlobal(1882707 + 7).As<INT*>() = 50 - hangarValue;
-					Stats::SetPackedBool(36828, true);
-				}
-			}
+			*ScriptGlobal(1882787 + 8).As<INT*>() = _hggoods.GetState();
+			*ScriptGlobal(1882787 + 7).As<INT*>() = 50;
+			Stats::SetPackedBool(36828, true);
 		}
 	};
 	static Air air("air", "Source Cargo##Air", "Bring the goods to the hangar.");
@@ -434,7 +405,7 @@ namespace YimMenu::Features
 			auto local_player = Player(static_cast<uint8_t>(0));
 			if (auto thread = Scripts::FindScriptThread("casino_lucky_wheel"_J))
 			{
-				auto localVar = ScriptLocal(thread, 143 + 1);
+				auto localVar = ScriptLocal(thread, 150 + 1);
 				if (localVar.CanAccess())
 				{
 					*localVar.At(local_player.GetId() * 5).As<int*>() = _clws.GetState();
